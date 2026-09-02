@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professional Portfolio Website - Dark & Blue</title>
+    <!-- Google Fonts: Inter and Poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        darkbg: '#090d16',
+                        darkcard: '#111827',
+                        darkcardhover: '#1f293d',
+                        brand: {
+                            50: '#eff6ff',
+                            100: '#dbeafe',
+                            400: '#60a5fa',
+                            500: '#3b82f6',
+                            600: '#2563eb',
+                            700: '#1d4ed8',
+                            900: '#1e3a8a'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        heading: ['Poppins', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #090d16;
+            color: #f3f4f6;
+        }
+
+        /* Dark Grid pattern with luminous glow */
+        .bg-grid-dark {
+            background-image: radial-gradient(rgba(59, 130, 246, 0.18) 1.5px, transparent 1.5px);
+            background-size: 28px 28px;
+        }
+
+        /* Glassmorphism Dark Cards */
+        .dark-glass-card {
+            background: rgba(17, 24, 39, 0.75);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.5);
+        }
+
+        .dark-glass-card:hover {
+            border-color: rgba(59, 130, 246, 0.5);
+            box-shadow: 0 15px 35px -5px rgba(37, 99, 235, 0.25);
+        }
+
+        /* Glowing Blue Text Accent */
+        .glow-text {
+            text-shadow: 0 0 20px rgba(59, 130, 246, 0.6);
+        }
+
+        .glow-border {
+            box-shadow: 0 0 25px rgba(37, 99, 235, 0.35);
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #090d16;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1d4ed8;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #3b82f6;
+        }
+    </style>
+</head>
+<body class="bg-darkbg text-slate-100 font-sans antialiased selection:bg-brand-600 selection:text-white">
+    <!-- navbar -->
+       <header class="fixed top-0 left-0 right-0 z-50 bg-darkbg/90 backdrop-blur-md border-b border-blue-900/40 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Logo -->
+                <a href="#home" class="flex items-center gap-2 text-2xl font-bold font-heading text-white tracking-tight">
+                    <span class="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-700 to-brand-500 text-white flex items-center justify-center font-black shadow-lg shadow-brand-500/30">P</span>
+                    <span>Portfolio<span class="text-brand-500">.</span></span>
+                </a>
+
+                <!-- Desktop Menu -->
+                <nav class="hidden md:flex items-center gap-8 font-medium text-slate-300">
+                    <a href="index.html" class="nav-link hover:text-brand-400 transition-colors py-2 active-nav text-brand-400">Home</a>
+                    <a href="about.html" class="nav-link hover:text-brand-400 transition-colors py-2">About</a>
+                    <a href="service.html" class="nav-link hover:text-brand-400 transition-colors py-2">Services</a>
+                    <a href="skill.html" class="nav-link hover:text-brand-400 transition-colors py-2">Skills</a>
+                    <a href="contact.html" class="nav-link hover:text-brand-400 transition-colors py-2">Contact</a>
+                </nav>
+
+                <!-- Action Button -->
+                <div class="hidden md:flex items-center gap-4">
+                    <a href="#contact" class="px-5 py-2.5 rounded-xl bg-brand-600 hover:bg-brand-500 text-white font-medium shadow-lg shadow-brand-600/40 transition-all transform hover:-translate-y-0.5 border border-brand-400/30">
+                        Get In Touch
+                    </a>
+                </div>
+
+                <!-- Mobile Hamburger Button -->
+                <button id="mobile-menu-btn" class="md:hidden text-slate-300 hover:text-brand-400 focus:outline-none p-2" aria-label="Toggle Menu">
+                    <i class="fa-solid fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobile-menu" class="hidden md:hidden bg-darkcard border-b border-blue-900/40 px-4 pt-2 pb-6 space-y-3 shadow-2xl">
+            <a href="#home" class="mobile-nav-link block px-3 py-2 rounded-lg text-slate-300 hover:bg-blue-950/60 hover:text-brand-400 font-medium">Home</a>
+            <a href="#about" class="mobile-nav-link block px-3 py-2 rounded-lg text-slate-300 hover:bg-blue-950/60 hover:text-brand-400 font-medium">About</a>
+            <a href="#services" class="mobile-nav-link block px-3 py-2 rounded-lg text-slate-300 hover:bg-blue-950/60 hover:text-brand-400 font-medium">Services</a>
+            <a href="#skills" class="mobile-nav-link block px-3 py-2 rounded-lg text-slate-300 hover:bg-blue-950/60 hover:text-brand-400 font-medium">Skills</a>
+            <a href="#contact" class="mobile-nav-link block px-3 py-2 rounded-lg text-slate-300 hover:bg-blue-950/60 hover:text-brand-400 font-medium">Contact</a>
+            <a href="#contact" class="block text-center mt-4 w-full px-5 py-2.5 rounded-xl bg-brand-600 text-white font-medium shadow-md">
+                Get In Touch
+            </a>
+        </div>
+    </header>
+
+      <!-- 3. SERVICES SECTION -->
+        <section id="services" class="py-20 bg-darkbg border-b border-blue-900/30">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="text-center max-w-3xl mx-auto mb-16">
+                    <span class="text-brand-400 font-semibold uppercase tracking-widest text-xs sm:text-sm">What I Offer</span>
+                    <h2 class="text-3xl sm:text-4xl font-bold font-heading text-white mt-2">Professional Services</h2>
+                    <p class="text-slate-400 mt-3 text-base">Customized technical solutions engineered for growth and aesthetic impact.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <!-- Service 1 -->
+                    <div class="dark-glass-card rounded-2xl p-8 transition-all duration-300 transform hover:-translate-y-2 flex flex-col justify-between">
+                        <div>
+                            <div class="w-14 h-14 rounded-2xl bg-gradient-to-tr from-brand-700 to-brand-500 text-white flex items-center justify-center text-2xl shadow-lg shadow-brand-600/30 mb-6">
+                                <i class="fa-solid fa-laptop-code"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-white font-heading mb-3">Web Development</h3>
+                            <p class="text-slate-400 text-sm leading-relaxed mb-6">
+                                Tailored web apps and modern single-page sites built using modern HTML5, CSS3, JavaScript, and React.
+                            </p>
+                        </div>
+                        <a href="#contact" class="inline-flex items-center text-sm font-semibold text-brand-400 hover:text-brand-300">
+                            Learn More <i class="fa-solid fa-chevron-right text-xs ml-1"></i>
+                        </a>
+                    </div>
+
+                    <!-- Service 2 -->
+                    <div class="dark-glass-card rounded-2xl p-8 transition-all duration-300 transform hover:-translate-y-2 flex flex-col justify-between">
+                        <div>
+                            <div class="w-14 h-14 rounded-2xl bg-gradient-to-tr from-indigo-700 to-indigo-500 text-white flex items-center justify-center text-2xl shadow-lg shadow-indigo-600/30 mb-6">
+                                <i class="fa-solid fa-pen-ruler"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-white font-heading mb-3">UI/UX Dark Design</h3>
+                            <p class="text-slate-400 text-sm leading-relaxed mb-6">
+                                Premium dark theme interface design, responsive layouts, and interactive UI systems focused on accessibility.
+                            </p>
+                        </div>
+                        <a href="#contact" class="inline-flex items-center text-sm font-semibold text-indigo-400 hover:text-indigo-300">
+                            Learn More <i class="fa-solid fa-chevron-right text-xs ml-1"></i>
+                        </a>
+                    </div>
+
+                    <!-- Service 3 -->
+                    <div class="dark-glass-card rounded-2xl p-8 transition-all duration-300 transform hover:-translate-y-2 flex flex-col justify-between">
+                        <div>
+                            <div class="w-14 h-14 rounded-2xl bg-gradient-to-tr from-cyan-700 to-cyan-500 text-white flex items-center justify-center text-2xl shadow-lg shadow-cyan-600/30 mb-6">
+                                <i class="fa-solid fa-wand-magic-sparkles"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-white font-heading mb-3">AI Solution Integration</h3>
+                            <p class="text-slate-400 text-sm leading-relaxed mb-6">
+                                Seamless connection of AI models (Gemini,ChatGPT) into web workflows for automated intelligence.
+                            </p>
+                        </div>
+                        <a href="#contact" class="inline-flex items-center text-sm font-semibold text-cyan-400 hover:text-cyan-300">
+                            Learn More <i class="fa-solid fa-chevron-right text-xs ml-1"></i>
+                        </a>
+                    </div>
+
+                    <!-- Service 4 -->
+                    <div class="dark-glass-card rounded-2xl p-8 transition-all duration-300 transform hover:-translate-y-2 flex flex-col justify-between">
+                        <div>
+                            <div class="w-14 h-14 rounded-2xl bg-gradient-to-tr from-amber-600 to-orange-500 text-white flex items-center justify-center text-2xl shadow-lg shadow-amber-600/30 mb-6">
+                                <i class="fa-brands fa-blogger-b"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-white font-heading mb-3">Wordpress & CMS Setup</h3>
+                            <p class="text-slate-400 text-sm leading-relaxed mb-6">
+                                Custom theme setup, template tweaking, and SEO structure for Blogger and content creation platforms.
+                            </p>
+                        </div>
+                        <a href="#contact" class="inline-flex items-center text-sm font-semibold text-amber-400 hover:text-amber-300">
+                            Learn More <i class="fa-solid fa-chevron-right text-xs ml-1"></i>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+        
+            <!-- Footer -->
+    <footer class="bg-black text-slate-500 py-12 border-t border-blue-950">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center sm:text-left">
+            <div class="flex flex-col sm:flex-row items-center justify-between gap-6">
+                
+                <!-- Footer Brand -->
+                <div class="flex items-center gap-2 text-xl font-bold font-heading text-white">
+                    <span class="w-8 h-8 rounded-lg bg-brand-600 text-white flex items-center justify-center text-sm font-black">P</span>
+                    <span>Portfolio<span class="text-brand-400">.</span></span>
+                </div>
+
+                <!-- Footer Text -->
+                <p class="text-sm">
+                    &copy; <span id="year"></span> Portfolio. All rights reserved.
+                </p>
+
+                <!-- Back to Top Button -->
+                <a href="#home" class="w-10 h-10 rounded-full bg-blue-950 hover:bg-brand-600 text-white flex items-center justify-center transition-all shadow-md border border-blue-900/50">
+                    <i class="fa-solid fa-arrow-up text-sm"></i>
+                </a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
