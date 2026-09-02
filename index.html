@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professional Portfolio Website - Dark & Blue</title>
+    <!-- Google Fonts: Inter and Poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        darkbg: '#090d16',
+                        darkcard: '#111827',
+                        darkcardhover: '#1f293d',
+                        brand: {
+                            50: '#eff6ff',
+                            100: '#dbeafe',
+                            400: '#60a5fa',
+                            500: '#3b82f6',
+                            600: '#2563eb',
+                            700: '#1d4ed8',
+                            900: '#1e3a8a'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        heading: ['Poppins', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #090d16;
+            color: #f3f4f6;
+        }
+
+        /* Dark Grid pattern with luminous glow */
+        .bg-grid-dark {
+            background-image: radial-gradient(rgba(59, 130, 246, 0.18) 1.5px, transparent 1.5px);
+            background-size: 28px 28px;
+        }
+
+        /* Glassmorphism Dark Cards */
+        .dark-glass-card {
+            background: rgba(17, 24, 39, 0.75);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.5);
+        }
+
+        .dark-glass-card:hover {
+            border-color: rgba(59, 130, 246, 0.5);
+            box-shadow: 0 15px 35px -5px rgba(37, 99, 235, 0.25);
+        }
+
+        /* Glowing Blue Text Accent */
+        .glow-text {
+            text-shadow: 0 0 20px rgba(59, 130, 246, 0.6);
+        }
+
+        .glow-border {
+            box-shadow: 0 0 25px rgba(37, 99, 235, 0.35);
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #090d16;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1d4ed8;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #3b82f6;
+        }
+    </style>
+</head>
+<body class="bg-darkbg text-slate-100 font-sans antialiased selection:bg-brand-600 selection:text-white">
+
+    <!-- Navigation Header -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-darkbg/90 backdrop-blur-md border-b border-blue-900/40 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Logo -->
+                <a href="#home" class="flex items-center gap-2 text-2xl font-bold font-heading text-white tracking-tight">
+                    <span class="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-700 to-brand-500 text-white flex items-center justify-center font-black shadow-lg shadow-brand-500/30">P</span>
+                    <span>Portfolio<span class="text-brand-500">.</span></span>
+                </a>
+
+                <!-- Desktop Menu -->
+                <nav class="hidden md:flex items-center gap-8 font-medium text-slate-300">
+                    <a href="index.html" class="nav-link hover:text-brand-400 transition-colors py-2 active-nav text-brand-400">Home</a>
+                    <a href="about.html" class="nav-link hover:text-brand-400 transition-colors py-2">About</a>
+                    <a href="service.html" class="nav-link hover:text-brand-400 transition-colors py-2">Services</a>
+                    <a href="skill.html" class="nav-link hover:text-brand-400 transition-colors py-2">Skills</a>
+                    <a href="contact.html" class="nav-link hover:text-brand-400 transition-colors py-2">Contact</a>
+                </nav>
+
+                <!-- Action Button -->
+                <div class="hidden md:flex items-center gap-4">
+                    <a href="#contact" class="px-5 py-2.5 rounded-xl bg-brand-600 hover:bg-brand-500 text-white font-medium shadow-lg shadow-brand-600/40 transition-all transform hover:-translate-y-0.5 border border-brand-400/30">
+                        Get In Touch
+                    </a>
+                </div>
+
+                <!-- Mobile Hamburger Button -->
+                <button id="mobile-menu-btn" class="md:hidden text-slate-300 hover:text-brand-400 focus:outline-none p-2" aria-label="Toggle Menu">
+                    <i class="fa-solid fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobile-menu" class="hidden md:hidden bg-darkcard border-b border-blue-900/40 px-4 pt-2 pb-6 space-y-3 shadow-2xl">
+            <a href="#home" class="mobile-nav-link block px-3 py-2 rounded-lg text-slate-300 hover:bg-blue-950/60 hover:text-brand-400 font-medium">Home</a>
+            <a href="#about" class="mobile-nav-link block px-3 py-2 rounded-lg text-slate-300 hover:bg-blue-950/60 hover:text-brand-400 font-medium">About</a>
+            <a href="#services" class="mobile-nav-link block px-3 py-2 rounded-lg text-slate-300 hover:bg-blue-950/60 hover:text-brand-400 font-medium">Services</a>
+            <a href="#skills" class="mobile-nav-link block px-3 py-2 rounded-lg text-slate-300 hover:bg-blue-950/60 hover:text-brand-400 font-medium">Skills</a>
+            <a href="#contact" class="mobile-nav-link block px-3 py-2 rounded-lg text-slate-300 hover:bg-blue-950/60 hover:text-brand-400 font-medium">Contact</a>
+            <a href="#contact" class="block text-center mt-4 w-full px-5 py-2.5 rounded-xl bg-brand-600 text-white font-medium shadow-md">
+                Get In Touch
+            </a>
+        </div>
+    </header>
+
+    <main class="pt-20">
+        <!-- 1. HOME / HERO SECTION -->
+        <section id="home" class="relative min-h-[calc(100vh-80px)] flex items-center overflow-hidden py-12 lg:py-20 border-b border-blue-900/30">
+            <!-- Background Glow & Grid Patterns -->
+            <div class="absolute inset-0 bg-grid-dark opacity-60 pointer-events-none"></div>
+            <div class="absolute -top-32 -left-32 w-[500px] h-[500px] bg-brand-600/20 rounded-full blur-[120px] pointer-events-none"></div>
+            <div class="absolute bottom-0 right-0 w-[550px] h-[550px] bg-blue-700/15 rounded-full blur-[140px] pointer-events-none"></div>
+
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
+                <!-- Side by Side Layout: 7 Cols Text (Left), 5 Cols Picture (Right) -->
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+                    
+                    <!-- Left Column: Title & Headline -->
+                    <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+                        <!-- Slogan Tag -->
+                        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-950/60 border border-brand-500/40 shadow-inner">
+                            <span class="w-2.5 h-2.5 rounded-full bg-brand-400 animate-ping"></span>
+                            <span class="text-xs sm:text-sm font-semibold text-brand-400 tracking-wide uppercase">Build Smart. Showcase Better.</span>
+                        </div>
+
+                        <!-- Main Headline (Portfolio Website) -->
+                        <h1 class="text-4xl sm:text-6xl lg:text-7xl font-extrabold font-heading text-white leading-[1.1] tracking-tight">
+                            WEB <br />
+                            <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-400 via-blue-500 to-cyan-400 glow-text">DEVELOPMENT</span>
+                        </h1>
+
+                        <!-- Subtitle Description -->
+                        <p class="text-lg sm:text-xl text-slate-400 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
+                            Crafting high-performance modern web applications, intelligent AI integrations, and high-converting modern user interfaces.
+                        </p>
+
+                        <!-- Call To Action Buttons -->
+                        <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-2">
+                            <a href="#contact" class="w-full sm:w-auto px-8 py-4 rounded-xl bg-brand-600 hover:bg-brand-500 text-white font-semibold shadow-xl shadow-brand-600/40 border border-brand-400/40 transition-all transform hover:-translate-y-1 text-center">
+                                Contact Me <i class="fa-solid fa-arrow-right ml-2 text-xs"></i>
+                            </a>
+                            <a href="#services" class="w-full sm:w-auto px-8 py-4 rounded-xl bg-darkcard hover:bg-blue-950 text-slate-200 border border-brand-500/30 font-semibold shadow-md transition-all text-center">
+                                Explore Services
+                            </a>
+                        </div>
+
+                        <!-- Platform / Tool Badges (Matching reference style in dark theme) -->
+                        <div class="pt-8 border-t border-blue-950">
+                            <p class="text-xs font-semibold uppercase tracking-wider text-slate-500 mb-4">Core Expertise & Ecosystem</p>
+                            <div class="flex flex-wrap items-center justify-center lg:justify-start gap-3 sm:gap-4">
+                                <div class="flex items-center gap-2.5 bg-darkcard/90 px-4 py-2.5 rounded-xl border border-blue-900/50 hover:border-brand-500 transition-colors">
+                                    <i class="fa-brands fa-blogger text-orange-400 text-xl"></i>
+                                    <span class="text-sm font-medium text-slate-200">Blogger</span>
+                                </div>
+                                <div class="flex items-center gap-2.5 bg-darkcard/90 px-4 py-2.5 rounded-xl border border-blue-900/50 hover:border-brand-500 transition-colors">
+                                    <i class="fa-solid fa-gem text-brand-400 text-xl"></i>
+                                    <span class="text-sm font-medium text-slate-200">Gemini AI</span>
+                                </div>
+                                <div class="flex items-center gap-2.5 bg-darkcard/90 px-4 py-2.5 rounded-xl border border-blue-900/50 hover:border-brand-500 transition-colors">
+                                    <i class="fa-solid fa-asterisk text-amber-500 text-xl"></i>
+                                    <span class="text-sm font-medium text-slate-200">Wordpress</span>
+                                </div>
+                                <div class="flex items-center gap-2.5 bg-darkcard/90 px-4 py-2.5 rounded-xl border border-blue-900/50 hover:border-brand-500 transition-colors">
+                                    <i class="fa-brands fa-react text-sky-400 text-xl"></i>
+                                    <span class="text-sm font-medium text-slate-200">Javascript</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right Column: Profile Picture Card side-by-side with headline -->
+                    <div class="lg:col-span-5 flex justify-center relative">
+                        <div class="relative w-72 h-72 sm:w-96 sm:h-96">
+                            <!-- Outer Glow Aura -->
+                            <div class="absolute inset-0 rounded-full bg-gradient-to-tr from-brand-600 via-blue-500 to-indigo-600 opacity-40 blur-2xl transform scale-110"></div>
+                            
+                            <!-- Circular Portrait Container -->
+                            <div class="absolute inset-0 rounded-full border-4 border-brand-500/60 shadow-2xl overflow-hidden bg-gradient-to-b from-blue-950 to-slate-900 flex items-end justify-center glow-border">
+                                <img src="img/ChatGPT Image ৩০ আগ, ২০২৬, ০৭_০৪_৫২ PM.png" 
+                                     alt="Profile Avatar" 
+                                     class="relative z-10 object-cover object-top w-full h-full transform hover:scale-105 transition-transform duration-500 filter contrast-105"
+                                     onerror="this.src='https://placehold.co/400x400/0f172a/3b82f6?text=User+Avatar'">
+                            </div>
+
+                            <!-- Floating Dark Status Badge 1 -->
+                            <div class="absolute -top-2 -right-2 bg-darkcard/90 backdrop-blur-md py-2.5 px-4 rounded-2xl shadow-xl border border-brand-500/40 flex items-center gap-3 z-20">
+                                <div class="w-8 h-8 rounded-lg bg-emerald-950 text-emerald-400 flex items-center justify-center font-bold border border-emerald-500/30">
+                                    <i class="fa-solid fa-circle-check text-xs"></i>
+                                </div>
+                                <div>
+                                   
+                                    <p class="text-xs font-bold text-slate-100">Available for Hire</p>
+                                </div>
+                            </div>
+
+                            <!-- Floating Dark Status Badge 2 -->
+                            <div class="absolute -bottom-4 -left-4 bg-darkcard/90 backdrop-blur-md py-3 px-4 rounded-2xl shadow-xl border border-brand-500/40 flex items-center gap-3 z-20">
+                                <div class="w-10 h-10 rounded-xl bg-blue-950 text-brand-400 flex items-center justify-center font-bold text-lg border border-brand-500/30">
+                                    <i class="fa-solid fa-code"></i>
+                                </div>
+                                <div>
+                                    <p class="text-[10px] text-slate-400 font-medium uppercase tracking-wider">Experience</p>
+                                    <p class="text-sm font-bold text-slate-100">1 Year</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. ABOUT SECTION -->
+        <section id="about" class="py-20 bg-darkbg border-b border-blue-900/30 relative">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <!-- Section Title Header -->
+                <div class="text-center max-w-3xl mx-auto mb-16">
+                    <span class="text-brand-400 font-semibold uppercase tracking-widest text-xs sm:text-sm">Get To Know Me</span>
+                    <h2 class="text-3xl sm:text-4xl font-bold font-heading text-white mt-2">About My Journey</h2>
+                    <div class="w-16 h-1 bg-brand-500 mx-auto mt-4 rounded-full"></div>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                    <!-- Left Bio Column -->
+                    <div class="lg:col-span-6 space-y-6">
+                        <h3 class="text-2xl font-bold text-white font-heading leading-snug">
+                          Wordpress Specializing in Modern Dark-Theme Web Interfaces & AI Workflows
+                        </h3>
+                        <p class="text-slate-400 leading-relaxed">
+                            I am a wordpress developer dedicated to creating high-performance, visually impactful digital products. My core focus spans modern front-end frameworks  and AI-driven systems.
+                        </p>
+                        <p class="text-slate-400 leading-relaxed">
+                            Whether building custom web applications from scratch or setting up content ecosystems, I prioritize speed, clean code standards, and seamless user experiences.
+                        </p>
+
+                        <!-- Key Highlights -->
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+                            <div class="flex items-center gap-3">
+                                <i class="fa-solid fa-circle-check text-brand-400 text-lg"></i>
+                                <span class="text-sm font-semibold text-slate-200">Responsive Web Architecture</span>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <i class="fa-solid fa-circle-check text-brand-400 text-lg"></i>
+                                <span class="text-sm font-semibold text-slate-200">AI Tool & API Integrations</span>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <i class="fa-solid fa-circle-check text-brand-400 text-lg"></i>
+                                <span class="text-sm font-semibold text-slate-200">Dark-Theme Graphic UI/UX</span>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <i class="fa-solid fa-circle-check text-brand-400 text-lg"></i>
+                                <span class="text-sm font-semibold text-slate-200">Performance & SEO Boost</span>
+                            </div>
+                        </div>
+
+                        <!-- Download Resume Action -->
+                        <div class="pt-4">
+                            <button onclick="downloadResume()" class="inline-flex items-center gap-3 px-6 py-3.5 rounded-xl bg-brand-600 hover:bg-brand-500 text-white font-medium shadow-lg shadow-brand-600/30 transition-all border border-brand-400/30">
+                                <i class="fa-solid fa-download text-sm"></i> Download CV / Resume
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Right Key Stats Cards Grid -->
+                    <div class="lg:col-span-6 grid grid-cols-2 gap-4 sm:gap-6">
+                        <div class="dark-glass-card p-6 rounded-2xl text-center transition-all duration-300">
+                            <div class="w-12 h-12 mx-auto mb-4 rounded-xl bg-blue-950 text-brand-400 flex items-center justify-center text-xl font-bold border border-blue-800/40">
+                                <i class="fa-solid fa-diagram-project"></i>
+                            </div>
+                            <h4 class="text-3xl font-extrabold text-white font-heading">1</h4>
+                            <p class="text-xs sm:text-sm font-medium text-slate-400 mt-1">Completed Project</p>
+                        </div>
+
+                        <div class="dark-glass-card p-6 rounded-2xl text-center transition-all duration-300">
+                            <div class="w-12 h-12 mx-auto mb-4 rounded-xl bg-indigo-950 text-indigo-400 flex items-center justify-center text-xl font-bold border border-indigo-800/40">
+                                <i class="fa-solid fa-users"></i>
+                            </div>
+                            <h4 class="text-3xl font-extrabold text-white font-heading">1</h4>
+                            <p class="text-xs sm:text-sm font-medium text-slate-400 mt-1">Satisfied Clients</p>
+                        </div>
+
+                        <div class="dark-glass-card p-6 rounded-2xl text-center transition-all duration-300">
+                            <div class="w-12 h-12 mx-auto mb-4 rounded-xl bg-cyan-950 text-cyan-400 flex items-center justify-center text-xl font-bold border border-cyan-800/40">
+                                <i class="fa-solid fa-award"></i>
+                            </div>
+                            <h4 class="text-3xl font-extrabold text-white font-heading">1</h4>
+                            <p class="text-xs sm:text-sm font-medium text-slate-400 mt-1">Year Experience</p>
+                        </div>
+
+                        <div class="dark-glass-card p-6 rounded-2xl text-center transition-all duration-300">
+                            <div class="w-12 h-12 mx-auto mb-4 rounded-xl bg-amber-950 text-amber-400 flex items-center justify-center text-xl font-bold border border-amber-800/40">
+                                <i class="fa-solid fa-star"></i>
+                            </div>
+                            <h4 class="text-3xl font-extrabold text-white font-heading">1</h4>
+                            <p class="text-xs sm:text-sm font-medium text-slate-400 mt-1">Client Rating</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- 3. SERVICES SECTION -->
+        <section id="services" class="py-20 bg-darkbg border-b border-blue-900/30">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="text-center max-w-3xl mx-auto mb-16">
+                    <span class="text-brand-400 font-semibold uppercase tracking-widest text-xs sm:text-sm">What I Offer</span>
+                    <h2 class="text-3xl sm:text-4xl font-bold font-heading text-white mt-2">Professional Services</h2>
+                    <p class="text-slate-400 mt-3 text-base">Customized technical solutions engineered for growth and aesthetic impact.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <!-- Service 1 -->
+                    <div class="dark-glass-card rounded-2xl p-8 transition-all duration-300 transform hover:-translate-y-2 flex flex-col justify-between">
+                        <div>
+                            <div class="w-14 h-14 rounded-2xl bg-gradient-to-tr from-brand-700 to-brand-500 text-white flex items-center justify-center text-2xl shadow-lg shadow-brand-600/30 mb-6">
+                                <i class="fa-solid fa-laptop-code"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-white font-heading mb-3">Web Development</h3>
+                            <p class="text-slate-400 text-sm leading-relaxed mb-6">
+                                Tailored web apps and modern single-page sites built using modern HTML5, CSS3, JavaScript, and React.
+                            </p>
+                        </div>
+                        <a href="#contact" class="inline-flex items-center text-sm font-semibold text-brand-400 hover:text-brand-300">
+                            Learn More <i class="fa-solid fa-chevron-right text-xs ml-1"></i>
+                        </a>
+                    </div>
+
+                    <!-- Service 2 -->
+                    <div class="dark-glass-card rounded-2xl p-8 transition-all duration-300 transform hover:-translate-y-2 flex flex-col justify-between">
+                        <div>
+                            <div class="w-14 h-14 rounded-2xl bg-gradient-to-tr from-indigo-700 to-indigo-500 text-white flex items-center justify-center text-2xl shadow-lg shadow-indigo-600/30 mb-6">
+                                <i class="fa-solid fa-pen-ruler"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-white font-heading mb-3">UI/UX Dark Design</h3>
+                            <p class="text-slate-400 text-sm leading-relaxed mb-6">
+                                Premium dark theme interface design, responsive layouts, and interactive UI systems focused on accessibility.
+                            </p>
+                        </div>
+                        <a href="#contact" class="inline-flex items-center text-sm font-semibold text-indigo-400 hover:text-indigo-300">
+                            Learn More <i class="fa-solid fa-chevron-right text-xs ml-1"></i>
+                        </a>
+                    </div>
+
+                    <!-- Service 3 -->
+                    <div class="dark-glass-card rounded-2xl p-8 transition-all duration-300 transform hover:-translate-y-2 flex flex-col justify-between">
+                        <div>
+                            <div class="w-14 h-14 rounded-2xl bg-gradient-to-tr from-cyan-700 to-cyan-500 text-white flex items-center justify-center text-2xl shadow-lg shadow-cyan-600/30 mb-6">
+                                <i class="fa-solid fa-wand-magic-sparkles"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-white font-heading mb-3">AI Solution Integration</h3>
+                            <p class="text-slate-400 text-sm leading-relaxed mb-6">
+                                Seamless connection of AI models (Gemini,ChatGPT) into web workflows for automated intelligence.
+                            </p>
+                        </div>
+                        <a href="#contact" class="inline-flex items-center text-sm font-semibold text-cyan-400 hover:text-cyan-300">
+                            Learn More <i class="fa-solid fa-chevron-right text-xs ml-1"></i>
+                        </a>
+                    </div>
+
+                    <!-- Service 4 -->
+                    <div class="dark-glass-card rounded-2xl p-8 transition-all duration-300 transform hover:-translate-y-2 flex flex-col justify-between">
+                        <div>
+                            <div class="w-14 h-14 rounded-2xl bg-gradient-to-tr from-amber-600 to-orange-500 text-white flex items-center justify-center text-2xl shadow-lg shadow-amber-600/30 mb-6">
+                                <i class="fa-brands fa-blogger-b"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-white font-heading mb-3">Wordpress & CMS Setup</h3>
+                            <p class="text-slate-400 text-sm leading-relaxed mb-6">
+                                Custom theme setup, template tweaking, and SEO structure for Blogger and content creation platforms.
+                            </p>
+                        </div>
+                        <a href="#contact" class="inline-flex items-center text-sm font-semibold text-amber-400 hover:text-amber-300">
+                            Learn More <i class="fa-solid fa-chevron-right text-xs ml-1"></i>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- 4. SKILLS SECTION -->
+        <section id="skills" class="py-20 bg-darkbg border-b border-blue-900/30">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="text-center max-w-3xl mx-auto mb-16">
+                    <span class="text-brand-400 font-semibold uppercase tracking-widest text-xs sm:text-sm">Proficiency & Tech</span>
+                    <h2 class="text-3xl sm:text-4xl font-bold font-heading text-white mt-2">Technical Skills</h2>
+                    <p class="text-slate-400 mt-3 text-base">Expertise built through hands-on development and modern tooling.</p>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                    
+                    <!-- Progress Bar Column -->
+                    <div class="space-y-6">
+                        
+                        <!-- Skill 1 -->
+                        <div>
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="font-semibold text-slate-200 text-sm">HTML5 / CSS3 / Bootstrap </span>
+                                <span class="text-sm font-bold text-brand-400">95%</span>
+                            </div>
+                            <div class="w-full h-3 bg-blue-950 rounded-full overflow-hidden border border-blue-900/50">
+                                <div class="h-full bg-gradient-to-r from-brand-600 to-brand-400 rounded-full transition-all duration-1000 w-[95%]"></div>
+                            </div>
+                        </div>
+
+                        <!-- Skill 2 -->
+                        <div>
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="font-semibold text-slate-200 text-sm">JavaScript</span>
+                                <span class="text-sm font-bold text-brand-400">90%</span>
+                            </div>
+                            <div class="w-full h-3 bg-blue-950 rounded-full overflow-hidden border border-blue-900/50">
+                                <div class="h-full bg-gradient-to-r from-brand-600 to-brand-400 rounded-full transition-all duration-1000 w-[90%]"></div>
+                            </div>
+                        </div>
+
+                        
+                       
+
+                        <!-- Skill 4 -->
+                        <div>
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="font-semibold text-slate-200 text-sm">AI Prompts & Workflow Automation</span>
+                                <span class="text-sm font-bold text-brand-400">92%</span>
+                            </div>
+                            <div class="w-full h-3 bg-blue-950 rounded-full overflow-hidden border border-blue-900/50">
+                                <div class="h-full bg-gradient-to-r from-brand-600 to-brand-400 rounded-full transition-all duration-1000 w-[92%]"></div>
+                            </div>
+                        </div>
+
+                        <!-- Skill 5 -->
+                        <div>
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="font-semibold text-slate-200 text-sm">Blogger Theme Customization</span>
+                                <span class="text-sm font-bold text-brand-400">88%</span>
+                            </div>
+                            <div class="w-full h-3 bg-blue-950 rounded-full overflow-hidden border border-blue-900/50">
+                                <div class="h-full bg-gradient-to-r from-brand-600 to-brand-400 rounded-full transition-all duration-1000 w-[88%]"></div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- Dark Tech Icons Matrix -->
+                    <div class="grid grid-cols-2 sm:grid-cols-3 gap-4">
+                       <div class="row">
+                        <div class="col">
+                             <div class="p-5 rounded-xl border border-blue-900/40 bg-darkcard hover:bg-blue-950 hover:border-brand-500 transition-all text-center">
+                            <i class="fa-brands fa-html5 text-3xl text-orange-500 mb-2"></i>
+                            <h4 class="font-bold text-slate-200 text-sm">HTML5</h4>
+                        </div> <br>
+                        <div class="p-5 rounded-xl border border-blue-900/40 bg-darkcard hover:bg-blue-950 hover:border-brand-500 transition-all text-center">
+                            <i class="fa-brands fa-css3-alt text-3xl text-blue-500 mb-2"></i>
+                            <h4 class="font-bold text-slate-200 text-sm">CSS3</h4>
+                        </div>
+                        </div>
+                       </div> <br>
+                       <div class="row">
+                        <div class="col">
+                             <div class="p-5 rounded-xl border border-blue-900/40 bg-darkcard hover:bg-blue-950 hover:border-brand-500 transition-all text-center">
+                            <i class="fa-brands fa-js text-3xl text-yellow-400 mb-2"></i>
+                            <h4 class="font-bold text-slate-200 text-sm">JavaScript</h4>
+                        </div> <br>
+                      
+                        <div class="p-5 rounded-xl border border-blue-900/40 bg-darkcard hover:bg-blue-950 hover:border-brand-500 transition-all text-center">
+                            <i class="fa-solid fa-brain text-3xl text-purple-400 mb-2"></i>
+                            <h4 class="font-bold text-slate-200 text-sm">Wordpress</h4>
+                        </div>
+                        </div>
+                       </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+        <!-- 5. CONTACT SECTION -->
+        <section id="contact" class="py-20 bg-darkbg relative">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="text-center max-w-3xl mx-auto mb-16">
+                    <span class="text-brand-400 font-semibold uppercase tracking-widest text-xs sm:text-sm">Get In Touch</span>
+                    <h2 class="text-3xl sm:text-4xl font-bold font-heading text-white mt-2">Let's Work Together</h2>
+                    <p class="text-slate-400 mt-3 text-base">Send me a message for project inquiries or collaborations.</p>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+                    
+                    <!-- Left Info Box -->
+                    <div class="lg:col-span-5 space-y-8">
+                        <div class="dark-glass-card p-8 rounded-2xl space-y-6">
+                            <h3 class="text-2xl font-bold text-white font-heading">Contact Information</h3>
+                            <p class="text-slate-400 text-sm leading-relaxed">
+                                Reach out directly via email or social networks. Available for freelance projects and team roles.
+                            </p>
+
+                            <div class="space-y-4">
+                                <div class="flex items-start gap-4">
+                                    <div class="w-10 h-10 rounded-xl bg-blue-950 text-brand-400 flex items-center justify-center text-lg shrink-0 mt-1 border border-blue-800/40">
+                                        <i class="fa-solid fa-envelope"></i>
+                                    </div>
+                                    <div>
+                                        <p class="text-xs text-slate-400 font-medium">Email Address</p>
+                                        <a href="mailto:nurjahanm425@gmail.com" class="text-sm font-semibold text-slate-200 hover:text-brand-400">nurjahanm425@gmail.com</a>
+                                    </div>
+                                </div>
+
+                                <div class="flex items-start gap-4">
+                                    <div class="w-10 h-10 rounded-xl bg-blue-950 text-brand-400 flex items-center justify-center text-lg shrink-0 mt-1 border border-blue-800/40">
+                                        <i class="fa-solid fa-phone"></i>
+                                    </div>
+                                    <div>
+                                        <p class="text-xs text-slate-400 font-medium">Phone / WhatsApp</p>
+                                        <p class="text-sm font-semibold text-slate-200">+8801862812547</p>
+                                    </div>
+                                </div>
+
+                                <div class="flex items-start gap-4">
+                                    <div class="w-10 h-10 rounded-xl bg-blue-950 text-brand-400 flex items-center justify-center text-lg shrink-0 mt-1 border border-blue-800/40">
+                                        <i class="fa-solid fa-location-dot"></i>
+                                    </div>
+                                    <div>
+                                        <p class="text-xs text-slate-400 font-medium">Location</p>
+                                        <p class="text-sm font-semibold text-slate-200">Rangpur City</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Social Links -->
+                            <div class="pt-4 border-t border-blue-950">
+                                <p class="text-xs font-semibold uppercase text-slate-500 mb-3">Connect With Me</p>
+                                <div class="flex items-center gap-3">
+                                    <a href="https://github.com/coderjui" class="w-10 h-10 rounded-xl bg-blue-950/60 hover:bg-brand-600 border border-blue-900/40 text-slate-300 hover:text-white flex items-center justify-center transition-all">
+                                        <i class="fa-brands fa-github"></i>
+                                    </a>
+                                    <a href="https://www.linkedin.com/in/nur-jahan-jui-b9757a369/" class="w-10 h-10 rounded-xl bg-blue-950/60 hover:bg-brand-600 border border-blue-900/40 text-slate-300 hover:text-white flex items-center justify-center transition-all">
+                                        <i class="fa-brands fa-linkedin-in"></i>
+                                    </a>
+                                    <a href="https://www.facebook.com/n.r.jahan.jui" class="w-10 h-10 rounded-xl bg-blue-950/60 hover:bg-brand-600 border border-blue-900/40 text-slate-300 hover:text-white flex items-center justify-center transition-all">
+                                        <i class="fa-brands fa-facebook"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right Form -->
+                    <div class="lg:col-span-7">
+                        <form id="contact-form" onsubmit="handleFormSubmit(event)" class="dark-glass-card p-8 rounded-2xl space-y-6">
+                            
+                            <!-- Custom Alert Notification Box -->
+                            <div id="form-alert" class="hidden p-4 rounded-xl text-sm font-medium"></div>
+
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                                <div>
+                                    <label for="name" class="block text-sm font-semibold text-slate-300 mb-2">Your Name</label>
+                                    <input type="text" id="name" required placeholder="Name" 
+                                           class="w-full px-4 py-3 rounded-xl bg-darkcard border border-blue-900/50 text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent transition-all">
+                                </div>
+
+                                <div>
+                                    <label for="email" class="block text-sm font-semibold text-slate-300 mb-2">Email Address</label>
+                                    <input type="email" id="email" required placeholder="E-mail" 
+                                           class="w-full px-4 py-3 rounded-xl bg-darkcard border border-blue-900/50 text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent transition-all">
+                                </div>
+                            </div>
+
+                            <div>
+                                <label for="subject" class="block text-sm font-semibold text-slate-300 mb-2">Subject</label>
+                                <input type="text" id="subject" required placeholder="Project Inquiry" 
+                                       class="w-full px-4 py-3 rounded-xl bg-darkcard border border-blue-900/50 text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent transition-all">
+                            </div>
+
+                            <div>
+                                <label for="message" class="block text-sm font-semibold text-slate-300 mb-2">Your Message</label>
+                                <textarea id="message" rows="5" required placeholder="Tell me about your project requirements..." 
+                                          class="w-full px-4 py-3 rounded-xl bg-darkcard border border-blue-900/50 text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent transition-all resize-none"></textarea>
+                            </div>
+
+                            <button type="submit" class="w-full py-4 rounded-xl bg-brand-600 hover:bg-brand-500 text-white font-semibold shadow-lg shadow-brand-600/40 border border-brand-400/40 transition-all">
+                                Send Message <i class="fa-solid fa-paper-plane ml-2 text-sm"></i>
+                            </button>
+                        </form>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-black text-slate-500 py-12 border-t border-blue-950">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center sm:text-left">
+            <div class="flex flex-col sm:flex-row items-center justify-between gap-6">
+                
+                <!-- Footer Brand -->
+                <div class="flex items-center gap-2 text-xl font-bold font-heading text-white">
+                    <span class="w-8 h-8 rounded-lg bg-brand-600 text-white flex items-center justify-center text-sm font-black">P</span>
+                    <span>Portfolio<span class="text-brand-400">.</span></span>
+                </div>
+
+                <!-- Footer Text -->
+                <p class="text-sm">
+                    &copy; <span id="year"></span> Portfolio. All rights reserved.
+                </p>
+
+                <!-- Back to Top Button -->
+                <a href="#home" class="w-10 h-10 rounded-full bg-blue-950 hover:bg-brand-600 text-white flex items-center justify-center transition-all shadow-md border border-blue-900/50">
+                    <i class="fa-solid fa-arrow-up text-sm"></i>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Set current year dynamically
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Mobile Menu Toggle Logic
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Close mobile menu when link is clicked
+        const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+        mobileNavLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // Active Navbar Link Highlight on Scroll
+        const sections = document.querySelectorAll('section');
+        const navLinks = document.querySelectorAll('.nav-link');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (pageYOffset >= (sectionTop - 150)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('text-brand-400', 'font-semibold');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('text-brand-400', 'font-semibold');
+                }
+            });
+        });
+
+        // Handle Contact Form Submission
+        function handleFormSubmit(event) {
+            event.preventDefault();
+            
+            const alertBox = document.getElementById('form-alert');
+            const name = document.getElementById('name').value;
+
+            // Show success alert inside card
+            alertBox.classList.remove('hidden', 'bg-red-950', 'text-red-400');
+            alertBox.classList.add('bg-blue-950', 'text-brand-300', 'border', 'border-brand-500/40');
+            alertBox.innerHTML = `<i class="fa-solid fa-circle-check mr-2"></i> Thank you <strong>${name}</strong>! Your message has been sent successfully.`;
+
+            // Reset Form Fields
+            document.getElementById('contact-form').reset();
+
+            // Auto hide message after 5 seconds
+            setTimeout(() => {
+                alertBox.classList.add('hidden');
+            }, 5000);
+        }
+
+        // Resume Download Trigger
+        function downloadResume() {
+            const blob = new Blob(["Professional Portfolio CV / Resume Content"], { type: 'text/plain' });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'Professional_Resume.txt';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            window.URL.revokeObjectURL(url);
+        }
+    </script>
+</body>
+</html>
